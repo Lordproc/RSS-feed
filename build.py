@@ -160,11 +160,18 @@ def parse(data, per_feed=PER_FEED):
 
 def load(url, per_feed=PER_FEED):
     try:
-        source, items = parse(fetch(url), per_feed)
-        # A newsletter bridge gathers many senders in one feed, so name each post by its sender.
+        # A newsletter bridge gathers many senders in one feed, so each post is named by its
+        # sender, and the per-feed limit counts per sender, so a chatty one cannot crowd out the rest.
         bridge = any(h in url for h in BRIDGE_HOSTS)
+        source, items = parse(fetch(url), 1000 if bridge else per_feed)
+        counts = {}
+        kept = []
         for i in items:
             i["source"] = (bridge and i["by"]) or source or url
+            counts[i["source"]] = counts.get(i["source"], 0) + 1
+            if counts[i["source"]] <= per_feed:
+                kept.append(i)
+        items = kept
         return url, items, None
     except Exception as e:
         return url, [], f"{type(e).__name__}: {e}"
