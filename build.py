@@ -31,6 +31,8 @@ MAX_ITEMS = 150    # items on the page in total
 # through a small relay on Cloudflare instead (worker/relay.js). Empty means fetch directly.
 RELAY = ""
 RELAYED_HOSTS = ("substack.com",)
+# Email-to-feed services: one inbox can hold many newsletters.
+BRIDGE_HOSTS = ("kill-the-newsletter.com",)
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15"
 
 
@@ -102,26 +104,34 @@ def atom_link(entry):
     return ""
 
 
+def author(entry):
+    """Atom author name, without an email address: 'Dive Club <hi@dive.club>' -> 'Dive Club'."""
+    a = child(entry, "author")
+    name = text(a, "name") if a is not None else ""
+    return re.sub(r"\s*<[^>]*>\s*$", "", name).strip().strip('"')
+
+
 def parse(data, per_feed=PER_FEED):
     root = ET.fromstring(data)
     kind = local(root.tag)
     if kind == "feed":
         source = text(root, "title")
         entries = [e for e in root if local(e.tag) == "entry"]
-        items = [(text(e, "title"), atom_link(e), text(e, "published", "updated")) for e in entries]
+        items = [(text(e, "title"), atom_link(e), text(e, "published", "updated"), author(e))
+                 for e in entries]
     else:
         channel = child(root, "channel")
         source = text(channel, "title") if channel is not None else ""
         # RSS 2.0 keeps items inside the channel; RSS 1.0 keeps them beside it.
         pool = list(channel) if kind == "rss" else list(root)
         entries = [e for e in pool if local(e.tag) == "item"]
-        items = [(text(e, "title"), text(e, "link"), text(e, "pubDate", "date")) for e in entries]
+        items = [(text(e, "title"), text(e, "link"), text(e, "pubDate", "date"), "") for e in entries]
 
     out = []
-    for title, link, date in items:
+    for title, link, date, by in items:
         when = parse_date(date)
         if link and when:
-            out.append({"title": clean(title) or link, "link": link, "when": when})
+            out.append({"title": clean(title) or link, "link": link, "when": when, "by": clean(by)})
     out.sort(key=lambda i: i["when"], reverse=True)
     return clean(source), out[:per_feed]
 
@@ -129,8 +139,10 @@ def parse(data, per_feed=PER_FEED):
 def load(url, per_feed=PER_FEED):
     try:
         source, items = parse(fetch(url), per_feed)
+        # A newsletter bridge gathers many senders in one feed, so name each post by its sender.
+        bridge = any(h in url for h in BRIDGE_HOSTS)
         for i in items:
-            i["source"] = source or url
+            i["source"] = (bridge and i["by"]) or source or url
         return url, items, None
     except Exception as e:
         return url, [], f"{type(e).__name__}: {e}"

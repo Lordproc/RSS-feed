@@ -34,3 +34,10 @@
 - Topics, from my profile and job radar: product and UX design; product practice (my gap is in-house product work); tech industry; AI from builders (8 of the August job ads asked for AI skills); service design and public sector (my favourite field, and where the Norwegian design jobs are); behaviour change and attention (my lens, and Days); accessibility; interaction and front-end craft; visual design and type; mobile platforms; Norway.
 - 61 sites checked from GitHub in two passes; 37 had working feeds. No feed found (worth another route later): Kode24, Shifter, Computerworld, Digdir, Designsystemet, Grafill, DOGA, Uutilsynet, Datatilsynet, Forbrukertilsynet, Netlife, Knowit, Itera, Eye on Design, Mind the Product, The Decision Lab, Emil Kowalski, Service Design Network, Design Council, Public Digital.
 - Six Substacks in `explore.txt` (Lenny, John Cutler, Ethan Mollick, Pragmatic Engineer, After Babel, Center for Humane Technology) use guessed addresses and wait on the relay.
+
+## Newsletters by email (2026-10-19)
+
+- Of the email-only newsletters, only TLDR Design also has a web feed (added to `feeds.txt`). Dive Club, Built for Mars, roadmap.sh, Design Spells, Growth.design and oio have none; COS and KA-YO are shops with none.
+- Route chosen: one Kill the Newsletter inbox (an email address that turns whatever it receives into a feed) and a Gmail filter that forwards only those senders to it. Existing subscriptions stay as they are, and a new newsletter joins by adding it to the filter. `build.py` names each bridged post by its sender (`BRIDGE_HOSTS`), so one inbox still shows "Dive Club", "Growth.design" and so on.
+- Gmail must never forward all mail: forwarding stays off in Gmail's Forwarding settings, and only the filter forwards.
+- The bridge's feed address sits in this public repo, so anyone who finds it can read those newsletters, including their personal unsubscribe links. Accepted: they are mass mailings.

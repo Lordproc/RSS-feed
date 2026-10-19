@@ -1,16 +1,3 @@
 # Sites to check for feeds: one website or feed address per line, then push.
 # GitHub runs tools/find_feeds.py on them and prints what works in the find-feeds log.
 # Not read by the reader.
-# 2026-10-19: the email-only newsletters, in case they also publish on the web.
-https://www.dive.club
-https://diveclub.beehiiv.com
-https://tldr.tech/design
-https://tldr.tech/api/rss/design
-https://builtformars.com
-https://roadmap.sh
-https://www.designspells.com
-https://growth.design
-https://oio.studio
-https://www.kode24.no/nyhetsbrev
-https://www.cos.com
-https://www.ka-yo.com

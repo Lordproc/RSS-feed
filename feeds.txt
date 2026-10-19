@@ -35,3 +35,8 @@ https://www.technologyreview.com/feed/
 https://uxmag.com/feed
 # World Happiness Report (guessed address, not checked)
 https://worldhappiness.report/feed/
+# TLDR Design (also published on the web; checked from GitHub 2026-10-19)
+https://tldr.tech/api/rss/design
+
+# Newsletter bridge (Kill the Newsletter): email-only newsletters, forwarded by a Gmail filter.
+# Feed address goes here once the inbox exists.
