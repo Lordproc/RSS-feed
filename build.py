@@ -29,7 +29,7 @@ PER_FEED = 15      # newest items kept from each feed, so one busy feed cannot b
 MAX_ITEMS = 150    # items on the page in total
 # Substack refuses requests from GitHub's servers (403), whatever they claim to be. Its feeds go
 # through a small relay on Cloudflare instead (worker/relay.js). Empty means fetch directly.
-RELAY = ""
+RELAY = "https://rss-relay.lordproctor.workers.dev/"
 RELAYED_HOSTS = ("substack.com",)
 # Email-to-feed services: one inbox can hold many newsletters.
 BRIDGE_HOSTS = ("kill-the-newsletter.com",)

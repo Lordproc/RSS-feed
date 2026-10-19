@@ -26,7 +26,7 @@
 
 - Substack answers 403 to every request from GitHub's servers, even with a Safari User-Agent; other feeds load fine from the same run. It blocks by network, not by name tag.
 - Fix chosen by the owner: a Cloudflare Worker (`worker/relay.js`) fetches Substack feeds from Cloudflare's network. `build.py` sends only `*.substack.com` through it, via the `RELAY` setting. The relay refuses anything that is not an https Substack `/feed` address, so it cannot be used as an open proxy, and keeps each feed for 15 minutes.
-- Not yet known whether Substack lets Cloudflare's network in. The first build after `RELAY` is set answers it. If it also gets 403, the remaining route is building from the Mac.
+- Relay live 2026-10-19 at `https://rss-relay.lordproctor.workers.dev/` (the owner's Cloudflare account). Not yet known whether Substack lets Cloudflare's network in. The first build after `RELAY` is set answers it. If it also gets 403, the remaining route is building from the Mac.
 
 ## Explore page (2026-10-19)
 
