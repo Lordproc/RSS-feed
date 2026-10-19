@@ -50,7 +50,7 @@ def bridge_text(url):
         return ""
     entries.sort(key=lambda e: build.text(e, "published", "updated"), reverse=True)
     raw = build.text(entries[0], "content", "summary")
-    body = build.clean(re.sub(r"<(style|script)[^>]*>.*?</\\1>", " ", raw, flags=re.S | re.I))
+    body = build.clean(re.sub(r"<(style|script)[^>]*>.*?</\1>", " ", raw, flags=re.S | re.I))
     links = re.findall(r'href=["\']([^"\']+)', build.html.unescape(raw))
     return f"\n        newest email: {body[:1500]}" + "".join(f"\n        link: {l}" for l in links[:8])
 

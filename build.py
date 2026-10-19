@@ -187,6 +187,9 @@ def nav(current):
     for file, label, href in PAGES:
         mark = ' aria-current="page"' if file == current else ""
         links.append(f'<a href="{href}"{mark}>{label}</a>')
+    # The saved home-screen app has no pull to refresh, so the page offers its own.
+    here = next(href for file, _, href in PAGES if file == current)
+    links.append(f'<a class="refresh" href="{here}">Refresh</a>')
     return '<nav aria-label="Pages">' + " ".join(links) + "</nav>"
 
 
@@ -253,6 +256,7 @@ a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 nav { display: flex; gap: 1.25rem; margin-bottom: 2rem; font-size: 0.8rem; }
 nav a, nav a:visited { display: inline-block; padding: 0.6rem 0; color: var(--muted); }
 nav a[aria-current] { color: var(--fg); font-weight: 600; }
+nav .refresh { margin-left: auto; }
 footer { margin-top: 3rem; font-size: 0.8rem; color: var(--muted); }
 footer a { display: inline; color: inherit; }
 </style>

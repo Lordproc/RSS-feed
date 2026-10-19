@@ -18,7 +18,7 @@
 - **Feeds (2026-10-19):** the 13 Substack subscriptions from the app, read off screenshots. Not checked from the cloud session (it cannot reach them); the first real build names any that fail in the footer. The Substack Post is listed as `post`, its handle in the app; if it fails, try `on.substack.com/feed`.
 - **Email newsletters (2026-10-19):** 12 added to `feeds.txt` from the last 12 months of Gmail, addresses worked out from the sender, not checked. Least certain: the three sent by Substack itself (`the-weekender`, `unstacked`, `someone-on-film`) and UX Magazine; the footer will say if they fail. Shops, receipts, product updates, job alerts and organisation news (Are.na, Rafto, APA, World Happiness Report, Artefact) were left out.
 - **Email only, not in the feed** (no feed found; would need a bridge such as Kill the Newsletter, or stay in email): Dive Club (beehiiv), TLDR Design, Built for Mars (UX Bites), roadmap.sh, Design Spells, Growth.design, oio news. Also COS and KA-YO (shops, asked for 2026-10-19): shops publish no feed, so they need the same bridge.
-- **World Happiness Report** added 2026-10-19 at a guessed address (`/feed/`); the footer will say if it is wrong.
+- **World Happiness Report** has no feed anywhere on its site (checked from GitHub 2026-10-19); removed. It can join the newsletter bridge filter instead.
 - **Unsubscribing** from the newsletters now in the feed cannot be done from the cloud session: the unsubscribe links are web links (Substack has no email option) and the session has no web access. Done by hand in Gmail or in Substack's settings.
 - **Public, decided 2026-10-19.** Repo `Lordproc/RSS-feed`, made by hand (a web session cannot create repos). `feeds.txt` and these notes are public.
 
@@ -42,3 +42,5 @@
 - Bridge inbox created 2026-10-19: `eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu@kill-the-newsletter.com`, feed in `feeds.txt`. Next: Gmail forwarding address (its confirmation code arrives as a post on Mine), then the filter.
 - Gmail must never forward all mail: forwarding stays off in Gmail's Forwarding settings, and only the filter forwards.
 - The bridge's feed address sits in this public repo, so anyone who finds it can read those newsletters, including their personal unsubscribe links. Accepted: they are mass mailings.
+
+- **Refresh** (2026-10-19): a link on the right of the top row reloads the page, for the home-screen app, which has no pull to refresh. It shows the newest hourly build; it does not fetch feeds on demand.
