@@ -33,3 +33,5 @@ https://mozilla-ai.ghost.io/rss/
 https://www.technologyreview.com/feed/
 # UX Magazine
 https://uxmag.com/feed
+# World Happiness Report (guessed address, not checked)
+https://worldhappiness.report/feed/
