@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
+<title>Sample RSS &amp; Co</title>
+<item><title>Plain RSS item</title><link>https://example.com/a</link><pubDate>Fri, 17 Oct 2025 09:30:00 +0200</pubDate></item>
+<item><title>Escaped &amp;amp; title with &lt;b&gt;tags&lt;/b&gt;</title><link>https://example.com/b</link><pubDate>Thu, 16 Oct 2025 22:10:00 GMT</pubDate></item>
+<item><title>No date, dropped</title><link>https://example.com/nodate</link></item>
+<item><title>dc:date instead of pubDate</title><link>https://example.com/c</link><dc:date>2025-10-15T08:00:00Z</dc:date></item>
+</channel></rss>

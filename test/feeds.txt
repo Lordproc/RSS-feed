@@ -1,0 +1,5 @@
+test/rss2.xml
+test/atom.xml
+test/rdf.xml
+test/missing.xml
+https://feeds.example.invalid/rss

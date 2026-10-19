@@ -1,0 +1,19 @@
+# One feed address per line. Lines starting with # are ignored.
+# A Substack's feed is <name>.substack.com/feed; a custom domain redirects there by itself.
+
+# Substack (13, from my subscriptions 2026-10-19)
+https://post.substack.com/feed
+https://colinmatthews.substack.com/feed
+https://uxco.substack.com/feed
+https://uxpsychology.substack.com/feed
+https://benjamintodd.substack.com/feed
+https://erifili.substack.com/feed
+https://forecastingresearch.substack.com/feed
+https://garden3d.substack.com/feed
+https://laurelsletter.substack.com/feed
+https://mitchpaone.substack.com/feed
+https://zoescaman.substack.com/feed
+https://natesnewsletter.substack.com/feed
+https://psychologybestpractice.substack.com/feed
+
+# Email newsletters: to add from Gmail once it is signed in again

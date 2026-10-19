@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sample Atom</title>
+<entry><title>Atom entry</title><link rel="alternate" href="https://example.org/1"/><link rel="replies" href="https://example.org/1#c"/><updated>2025-10-17T12:00:00+02:00</updated></entry>
+<entry><title type="html">Atom &amp;lt;em&amp;gt;html&amp;lt;/em&amp;gt; title</title><link href="https://example.org/2"/><published>2025-10-14T07:00:00Z</published></entry>
+<entry><title>Duplicate of an RSS link</title><link href="https://example.com/a"/><updated>2025-10-13T07:00:00Z</updated></entry>
+</feed>
