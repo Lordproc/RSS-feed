@@ -39,5 +39,6 @@
 
 - Of the email-only newsletters, only TLDR Design also has a web feed (added to `feeds.txt`). Dive Club, Built for Mars, roadmap.sh, Design Spells, Growth.design and oio have none; COS and KA-YO are shops with none.
 - Route chosen: one Kill the Newsletter inbox (an email address that turns whatever it receives into a feed) and a Gmail filter that forwards only those senders to it. Existing subscriptions stay as they are, and a new newsletter joins by adding it to the filter. `build.py` names each bridged post by its sender (`BRIDGE_HOSTS`), so one inbox still shows "Dive Club", "Growth.design" and so on.
+- Bridge inbox created 2026-10-19: `eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu@kill-the-newsletter.com`, feed in `feeds.txt`. Next: Gmail forwarding address (its confirmation code arrives as a post on Mine), then the filter.
 - Gmail must never forward all mail: forwarding stays off in Gmail's Forwarding settings, and only the filter forwards.
 - The bridge's feed address sits in this public repo, so anyone who finds it can read those newsletters, including their personal unsubscribe links. Accepted: they are mass mailings.

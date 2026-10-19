@@ -39,4 +39,4 @@ https://worldhappiness.report/feed/
 https://tldr.tech/api/rss/design
 
 # Newsletter bridge (Kill the Newsletter): email-only newsletters, forwarded by a Gmail filter.
-# Feed address goes here once the inbox exists.
+https://kill-the-newsletter.com/feeds/eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu.xml
