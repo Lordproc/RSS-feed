@@ -27,3 +27,10 @@
 - Substack answers 403 to every request from GitHub's servers, even with a Safari User-Agent; other feeds load fine from the same run. It blocks by network, not by name tag.
 - Fix chosen by the owner: a Cloudflare Worker (`worker/relay.js`) fetches Substack feeds from Cloudflare's network. `build.py` sends only `*.substack.com` through it, via the `RELAY` setting. The relay refuses anything that is not an https Substack `/feed` address, so it cannot be used as an open proxy, and keeps each feed for 15 minutes.
 - Not yet known whether Substack lets Cloudflare's network in. The first build after `RELAY` is set answers it. If it also gets 403, the remaining route is building from the Mac.
+
+## Explore page (2026-10-19)
+
+- Asked for: topics I should keep up with or be exposed to, from my goals, and feeds for them, as a parallel thing to my own subscriptions. Built as a second page so busy news sites do not bury the writers I chose.
+- Topics, from my profile and job radar: product and UX design; product practice (my gap is in-house product work); tech industry; AI from builders (8 of the August job ads asked for AI skills); service design and public sector (my favourite field, and where the Norwegian design jobs are); behaviour change and attention (my lens, and Days); accessibility; interaction and front-end craft; visual design and type; mobile platforms; Norway.
+- 61 sites checked from GitHub in two passes; 37 had working feeds. No feed found (worth another route later): Kode24, Shifter, Computerworld, Digdir, Designsystemet, Grafill, DOGA, Uutilsynet, Datatilsynet, Forbrukertilsynet, Netlife, Knowit, Itera, Eye on Design, Mind the Product, The Decision Lab, Emil Kowalski, Service Design Network, Design Council, Public Digital.
+- Six Substacks in `explore.txt` (Lenny, John Cutler, Ethan Mollick, Pragmatic Engineer, After Babel, Center for Humane Technology) use guessed addresses and wait on the relay.

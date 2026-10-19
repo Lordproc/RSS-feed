@@ -102,7 +102,7 @@ def atom_link(entry):
     return ""
 
 
-def parse(data):
+def parse(data, per_feed=PER_FEED):
     root = ET.fromstring(data)
     kind = local(root.tag)
     if kind == "feed":
@@ -123,12 +123,12 @@ def parse(data):
         if link and when:
             out.append({"title": clean(title) or link, "link": link, "when": when})
     out.sort(key=lambda i: i["when"], reverse=True)
-    return clean(source), out[:PER_FEED]
+    return clean(source), out[:per_feed]
 
 
-def load(url):
+def load(url, per_feed=PER_FEED):
     try:
-        source, items = parse(fetch(url))
+        source, items = parse(fetch(url), per_feed)
         for i in items:
             i["source"] = source or url
         return url, items, None
@@ -144,7 +144,19 @@ def day_label(d, today):
     return f"{d:%a} {d.day} {d:%b}"
 
 
-def render(items, failed, now):
+# The two pages: my own subscriptions, and a wider list chosen to keep me up to date.
+PAGES = [("index.html", "Mine", "./"), ("explore.html", "Explore", "explore.html")]
+
+
+def nav(current):
+    links = []
+    for file, label, href in PAGES:
+        mark = ' aria-current="page"' if file == current else ""
+        links.append(f'<a href="{href}"{mark}>{label}</a>')
+    return '<nav aria-label="Pages">' + " ".join(links) + "</nav>"
+
+
+def render(items, failed, now, page="index.html"):
     today = now.date()
     rows, current = [], None
     for i in items:
@@ -164,12 +176,14 @@ def render(items, failed, now):
         rows.append("<p>Nothing new.</p>")
 
     # A link back to the page, because a saved home-screen app on iPhone has no pull to refresh.
-    foot = f'<a href="./">Updated {now.day} {now:%b %H:%M}</a>'
+    here = "./" if page == "index.html" else page
+    foot = f'<a href="{here}">Updated {now.day} {now:%b %H:%M}</a>'
     if failed:
         names = ", ".join(html.escape(u) for u in failed)
         foot += f'<br>Could not read {len(failed)}: {names}'
 
-    return TEMPLATE.replace("{{rows}}", "\n".join(rows)).replace("{{foot}}", foot)
+    return (TEMPLATE.replace("{{nav}}", nav(page)).replace("{{rows}}", "\n".join(rows))
+            .replace("{{foot}}", foot))
 
 
 TEMPLATE = """<!doctype html>
@@ -202,11 +216,15 @@ a:visited { color: var(--read); }
 a:hover .t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .s { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+nav { display: flex; gap: 1.25rem; margin-bottom: 2rem; font-size: 0.8rem; }
+nav a, nav a:visited { display: inline-block; padding: 0.6rem 0; color: var(--muted); }
+nav a[aria-current] { color: var(--fg); font-weight: 600; }
 footer { margin-top: 3rem; font-size: 0.8rem; color: var(--muted); }
 footer a { display: inline; color: inherit; }
 </style>
 </head>
 <body>
+{{nav}}
 <main>
 {{rows}}
 </main>
@@ -217,19 +235,13 @@ footer a { display: inline; color: inherit; }
 """
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--feeds", default=HERE / "feeds.txt")
-    ap.add_argument("--out", default=HERE / "site" / "index.html")
-    ap.add_argument("--days", type=int, default=14, help="leave out items older than this")
-    args = ap.parse_args()
-
-    urls = read_feed_list(args.feeds)
+def build_page(feeds, out, page, days, per_feed, max_items):
+    urls = read_feed_list(feeds)
     with ThreadPoolExecutor(max_workers=8) as pool:
-        results = list(pool.map(load, urls))
+        results = list(pool.map(lambda u: load(u, per_feed), urls))
 
     now = datetime.now(TZ)
-    cutoff = now - timedelta(days=args.days)
+    cutoff = now - timedelta(days=days)
     seen, items, failed = set(), [], []
     for url, got, err in results:
         if err:
@@ -240,14 +252,29 @@ def main():
                 seen.add(i["link"])
                 items.append(i)
     items.sort(key=lambda i: i["when"], reverse=True)
-    items = items[:MAX_ITEMS]
+    items = items[:max_items]
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(render(items, failed, now, page))
+    print(f"{len(items)} items from {len(urls) - len(failed)} of {len(urls)} feeds -> {out}")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--feeds", default=HERE / "feeds.txt")
+    ap.add_argument("--explore", default=HERE / "explore.txt")
+    ap.add_argument("--out", default=HERE / "site" / "index.html")
+    ap.add_argument("--days", type=int, default=14, help="leave out items older than this")
+    args = ap.parse_args()
 
     out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render(items, failed, now))
+    build_page(args.feeds, out, "index.html", args.days, PER_FEED, MAX_ITEMS)
+    # Explore holds busy news sites, so fewer per feed: one site's day cannot fill the page.
+    explore = Path(args.explore)
+    if explore.exists():
+        build_page(explore, out.parent / "explore.html", "explore.html", args.days, 5, 200)
     # App icon, manifest and offline copy, so the page can be saved to a phone's home screen.
     shutil.copytree(HERE / "static", out.parent, dirs_exist_ok=True)
-    print(f"{len(items)} items from {len(urls) - len(failed)} of {len(urls)} feeds -> {out}")
 
 
 if __name__ == "__main__":

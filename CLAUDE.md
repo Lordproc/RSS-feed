@@ -7,5 +7,7 @@ My personal, hyper-minimal RSS reader: one page, newest first, grouped by day. T
 - **Repo:** `Lordproc/RSS-feed`, public. In Kit it sits at `projects/RSS-feed/` (gitignored there).
 - **Hosting:** `.github/workflows/build.yml` rebuilds hourly and on every push to `main`, and publishes with GitHub Pages at https://lordproc.github.io/RSS-feed/. **Pushing `main` publishes.**
 - **Run locally:** `./run`, then open http://localhost:8000.
-- **Test:** `python3 build.py --feeds test/feeds.txt --out test/out/index.html --days 100000`. Should print `6 items from 3 of 5 feeds` (one RSS 2.0, one Atom, one RSS 1.0 fixture, plus two feeds that fail on purpose).
-- **Add or remove a feed:** edit `feeds.txt`, one address per line.
+- **Test:** `python3 build.py --feeds test/feeds.txt --explore test/feeds.txt --out test/out/index.html --days 100000`. Should print `6 items from 3 of 5 feeds` twice, once per page (one RSS 2.0, one Atom, one RSS 1.0 fixture, plus two feeds that fail on purpose).
+- **Two pages:** `feeds.txt` is my own subscriptions (`index.html`, "Mine"); `explore.txt` is a wider list Kit picked to keep me current (`explore.html`, "Explore", 5 newest per feed so busy news sites cannot fill it).
+- **Add or remove a feed:** edit `feeds.txt` or `explore.txt`, one address per line.
+- **Find a feed for a site:** put the site address in `candidates.txt` and push; the find-feeds workflow log says which feed works and how fresh it is. This session's own network cannot reach most sites, GitHub's can.

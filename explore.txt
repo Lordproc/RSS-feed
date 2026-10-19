@@ -1,0 +1,69 @@
+# Explore: a wider list, picked to keep me current and to stretch me. Shown on its own page.
+# Every address here was fetched and checked from GitHub on 2026-10-19 (tools/find_feeds.py),
+# except the Substacks at the end, which wait on the relay.
+
+# Product and UX design
+https://www.nngroup.com/feed/rss/
+https://www.smashingmagazine.com/feed
+https://uxdesign.cc/feed
+https://alistapart.com/main/feed/
+https://www.figma.com/blog/feed/atom.xml
+https://measuringu.com/feed/
+
+# Product practice (the in-house product gap)
+https://www.svpg.com/feed
+https://www.producttalk.org/rss/
+
+# Tech industry
+https://stratechery.com/feed
+https://www.theverge.com/rss/index.xml
+https://www.platformer.news/rss/
+https://www.ben-evans.com/benedictevans?format=rss
+https://arstechnica.com/feed
+
+# AI, from people who build with it
+https://simonwillison.net/atom/everything/
+https://maggieappleton.com/rss.xml
+
+# Service design and public sector
+https://designnotes.blog.gov.uk/feed/
+https://gds.blog.gov.uk/feed/
+
+# Behaviour change and attention
+https://behavioralscientist.org/feed/
+https://calnewport.com/feed
+
+# Accessibility
+https://adrianroselli.com/feed
+https://www.sarasoueidan.com/blog/index.xml
+https://vispero.com/feed/
+
+# Interaction and front-end craft
+https://www.joshwcomeau.com/rss.xml
+https://webkit.org/feed/
+https://developer.chrome.com/blog/feed.xml
+
+# Visual design and type
+http://feeds2.feedburner.com/itsnicethat/SlXC
+https://fontsinuse.com/main.rss
+https://www.creativeboom.com/feed/
+
+# Mobile platforms
+https://developer.apple.com/news/rss/news.rss
+https://android-developers.googleblog.com/feeds/posts/default
+
+# Norway
+https://aksel.nav.no/rss/produktbloggen-rss.xml
+https://www.bekk.no/fag/rss
+https://nrkbeta.no/feed/
+https://www.digi.no/rss
+https://www.tu.no/rss
+https://www.kampanje.com/rss
+
+# Substack (not checked; they load once the relay is on)
+https://lenny.substack.com/feed
+https://cutlefish.substack.com/feed
+https://oneusefulthing.substack.com/feed
+https://pragmaticengineer.substack.com/feed
+https://jonathanhaidt.substack.com/feed
+https://centerforhumanetechnology.substack.com/feed
