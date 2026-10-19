@@ -39,6 +39,22 @@ def advertised(page_url, html):
     return found
 
 
+def bridge_text(url):
+    """For a newsletter bridge, the newest email's text, so codes and links in it can be read."""
+    try:
+        root = ET.fromstring(build.fetch(url))
+    except Exception:
+        return ""
+    entries = [e for e in root if build.local(e.tag) == "entry"]
+    if not entries:
+        return ""
+    entries.sort(key=lambda e: build.text(e, "published", "updated"), reverse=True)
+    raw = build.text(entries[0], "content", "summary")
+    body = build.clean(re.sub(r"<(style|script)[^>]*>.*?</\\1>", " ", raw, flags=re.S | re.I))
+    links = re.findall(r'href=["\']([^"\']+)', build.html.unescape(raw))
+    return f"\n        newest email: {body[:1500]}" + "".join(f"\n        link: {l}" for l in links[:8])
+
+
 def find(site):
     tried = []
     try:
@@ -70,7 +86,8 @@ def find(site):
     url, source, items = hit
     newest = items[0]["when"].date().isoformat() if items else "no dated items"
     titles = "".join(f"\n        {i['when']:%Y-%m-%d %H:%M}  {i['title'][:200]}\n          {i['link']}" for i in items[:5])
-    return f"OK    {newest}  {len(items):>2} items  {url}  [{source}]{titles}"
+    extra = bridge_text(url) if any(h in url for h in build.BRIDGE_HOSTS) else ""
+    return f"OK    {newest}  {len(items):>2} items  {url}  [{source}]{titles}{extra}"
 
 
 def main():
