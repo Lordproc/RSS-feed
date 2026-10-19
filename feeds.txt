@@ -16,4 +16,20 @@ https://zoescaman.substack.com/feed
 https://natesnewsletter.substack.com/feed
 https://psychologybestpractice.substack.com/feed
 
-# Email newsletters: to add from Gmail once it is signed in again
+# Email newsletters (12, from Gmail 2026-10-19)
+# Substack: Noahpinion, Jakob Nielsen, AI Snake Oil, Uncharted Territories, Nathaniel Drew, Sneak Peek Design, and three from Substack itself (The Weekender, Unstacked, Someone on Film)
+https://noahpinion.substack.com/feed
+https://jakobnielsenphd.substack.com/feed
+https://aisnakeoil.substack.com/feed
+https://unchartedterritories.substack.com/feed
+https://nathanieldrew.substack.com/feed
+https://sneakpeekdesign.substack.com/feed
+https://the-weekender.substack.com/feed
+https://unstacked.substack.com/feed
+https://someone-on-film.substack.com/feed
+# Mozilla.ai (Ghost)
+https://mozilla-ai.ghost.io/rss/
+# MIT Technology Review (whole site; the email is its AI newsletter, The Algorithm)
+https://www.technologyreview.com/feed/
+# UX Magazine
+https://uxmag.com/feed
