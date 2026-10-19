@@ -10,6 +10,9 @@ import html
 import re
 import shutil
 import sys
+import threading
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -45,18 +48,37 @@ def read_feed_list(path):
     return urls
 
 
-def fetch(url):
-    if "://" not in url:
-        return (HERE / url).read_bytes()
-    host = urllib.parse.urlsplit(url).hostname or ""
-    if RELAY and any(host == h or host.endswith("." + h) for h in RELAYED_HOSTS):
-        url = RELAY + "?url=" + urllib.parse.quote(url, safe="")
+# Substack answers 429 (too many requests) when its feeds are asked for all at once,
+# so relayed requests take turns, a second apart, and wait once more if told to slow down.
+RELAY_GAP = 1.0
+_relay_turn = threading.Lock()
+
+
+def _get(url):
     req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
         "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8",
     })
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read()
+
+
+def fetch(url):
+    if "://" not in url:
+        return (HERE / url).read_bytes()
+    host = urllib.parse.urlsplit(url).hostname or ""
+    if not (RELAY and any(host == h or host.endswith("." + h) for h in RELAYED_HOSTS)):
+        return _get(url)
+    relayed = RELAY + "?url=" + urllib.parse.quote(url, safe="")
+    for attempt in range(3):
+        with _relay_turn:
+            time.sleep(RELAY_GAP)
+            try:
+                return _get(relayed)
+            except urllib.error.HTTPError as e:
+                if e.code != 429 or attempt == 2:
+                    raise
+            time.sleep(10 * (attempt + 1))
 
 
 def local(tag):
