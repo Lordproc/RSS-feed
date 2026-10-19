@@ -10,6 +10,7 @@ import html
 import re
 import shutil
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
@@ -26,7 +27,10 @@ except Exception:
 HERE = Path(__file__).parent
 PER_FEED = 15      # newest items kept from each feed, so one busy feed cannot bury the rest
 MAX_ITEMS = 150    # items on the page in total
-# Substack answers 403 to unknown readers, so this looks like a browser.
+# Substack refuses requests from GitHub's servers (403), whatever they claim to be. Its feeds go
+# through a small relay on Cloudflare instead (worker/relay.js). Empty means fetch directly.
+RELAY = ""
+RELAYED_HOSTS = ("substack.com",)
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15"
 
 
@@ -42,6 +46,9 @@ def read_feed_list(path):
 def fetch(url):
     if "://" not in url:
         return (HERE / url).read_bytes()
+    host = urllib.parse.urlsplit(url).hostname or ""
+    if RELAY and any(host == h or host.endswith("." + h) for h in RELAYED_HOSTS):
+        url = RELAY + "?url=" + urllib.parse.quote(url, safe="")
     req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
         "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8",

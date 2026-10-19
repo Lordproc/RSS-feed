@@ -21,3 +21,9 @@
 - **World Happiness Report** added 2026-10-19 at a guessed address (`/feed/`); the footer will say if it is wrong.
 - **Unsubscribing** from the newsletters now in the feed cannot be done from the cloud session: the unsubscribe links are web links (Substack has no email option) and the session has no web access. Done by hand in Gmail or in Substack's settings.
 - **Public, decided 2026-10-19.** Repo `Lordproc/RSS-feed`, made by hand (a web session cannot create repos). `feeds.txt` and these notes are public.
+
+## Substack relay (2026-10-19)
+
+- Substack answers 403 to every request from GitHub's servers, even with a Safari User-Agent; other feeds load fine from the same run. It blocks by network, not by name tag.
+- Fix chosen by the owner: a Cloudflare Worker (`worker/relay.js`) fetches Substack feeds from Cloudflare's network. `build.py` sends only `*.substack.com` through it, via the `RELAY` setting. The relay refuses anything that is not an https Substack `/feed` address, so it cannot be used as an open proxy, and keeps each feed for 15 minutes.
+- Not yet known whether Substack lets Cloudflare's network in. The first build after `RELAY` is set answers it. If it also gets 403, the remaining route is building from the Mac.
