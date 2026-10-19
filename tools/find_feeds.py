@@ -69,7 +69,8 @@ def find(site):
         return f"NONE  {site}  (no feed found; tried {len(tried)})"
     url, source, items = hit
     newest = items[0]["when"].date().isoformat() if items else "no dated items"
-    return f"OK    {newest}  {len(items):>2} items  {url}  [{source}]"
+    titles = "".join(f"\n        {i['when']:%Y-%m-%d %H:%M}  {i['title'][:90]}" for i in items[:5])
+    return f"OK    {newest}  {len(items):>2} items  {url}  [{source}]{titles}"
 
 
 def main():

@@ -1,5 +1,4 @@
 # Sites to check for feeds: one website or feed address per line, then push.
-# GitHub runs tools/find_feeds.py on them and prints what works in the find-feeds log.
+# GitHub runs tools/find_feeds.py on them and prints what works, with the newest titles, in the find-feeds log.
 # Not read by the reader.
-https://worldhappiness.report
-https://worldhappiness.report/news/
+https://kill-the-newsletter.com/feeds/eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu.xml
