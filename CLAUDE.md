@@ -1,6 +1,6 @@
 # Feed
 
-My personal, hyper-minimal RSS reader: one page, newest first, grouped by day. Title and source, nothing else. No accounts, no JavaScript, no unread counts.
+My personal, hyper-minimal RSS reader: one page, newest first, grouped by day. Title and source, nothing else. No accounts, no unread counts, and no JavaScript except the small offline helper (`static/sw.js`) that lets the saved phone app open without a connection.
 
 - **Kit's role:** engineering project. Kit's design rules apply to the page's look and copy only. Keep it minimal: every addition has to earn its place against "one list of links".
 - **Stack:** `build.py` (Python 3.11+, standard library only) reads `feeds.txt`, fetches every feed, and writes one static page to `site/index.html`. Styles live inline in the template at the bottom of `build.py`.

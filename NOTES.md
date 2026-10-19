@@ -9,11 +9,11 @@
 - **Contrast, measured:** light: text 18.88:1, source 5.33:1, read 4.54:1. Dark: text 15.98:1, source 6.71:1, read 4.52:1. All pass 4.5:1.
 - **Rows** are at least 37px tall and touch each other, so a tap never lands between two links. `noindex` keeps search engines off it.
 
-- **Saveable as a phone app (2026-10-19).** A manifest and icon in `static/` (copied next to the page on build) let it be added to the home screen and open full screen. Still no JavaScript, so no service worker and no offline copy; Chrome no longer needs one to install. The "Updated" time in the footer links back to the page, since a home-screen app on iPhone has no pull to refresh. Icon: three light list rows on near-black, drawn once with a small script, inside Android's safe zone.
+- **Saveable as a phone app (2026-10-19).** A manifest and icon in `static/` (copied next to the page on build) let it be added to the home screen and open full screen. Works offline since 2026-10-19 (asked for): `static/sw.js` plus one line on the page registers a service worker that always tries the network first and falls back to the last page it saved. That is the only JavaScript. Articles themselves still need a connection. The "Updated" time in the footer links back to the page, since a home-screen app on iPhone has no pull to refresh. Icon: three light list rows on near-black, drawn once with a small script, inside Android's safe zone.
 
 ## Open
 
-- Pages must be switched on once by hand: repo Settings, Pages, Source: GitHub Actions. Until then the hourly job fails at the deploy step.
+- Pages must be switched on once by hand: repo Settings, Pages, Source: GitHub Actions. Until then the hourly job fails at the deploy step. Still off on 2026-10-19 (first run failed with "Get Pages site failed"; the page shows GitHub's 404), and runs 2 to 6 sat queued without starting.
 - GitHub pauses scheduled jobs in a public repo after 60 days with no commits. Editing `feeds.txt` now and then is enough; otherwise re-enable it in the repo's Actions tab.
 - **Feeds (2026-10-19):** the 13 Substack subscriptions from the app, read off screenshots. Not checked from the cloud session (it cannot reach them); the first real build names any that fail in the footer. The Substack Post is listed as `post`, its handle in the app; if it fails, try `on.substack.com/feed`.
 - **Email newsletters (2026-10-19):** 12 added to `feeds.txt` from the last 12 months of Gmail, addresses worked out from the sender, not checked. Least certain: the three sent by Substack itself (`the-weekender`, `unstacked`, `someone-on-film`) and UX Magazine; the footer will say if they fail. Shops, receipts, product updates, job alerts and organisation news (Are.na, Rafto, APA, World Happiness Report, Artefact) were left out.

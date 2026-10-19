@@ -204,6 +204,7 @@ footer a { display: inline; color: inherit; }
 {{rows}}
 </main>
 <footer>{{foot}}</footer>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");</script>
 </body>
 </html>
 """
@@ -237,7 +238,7 @@ def main():
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render(items, failed, now))
-    # App icon and manifest, so the page can be saved to a phone's home screen.
+    # App icon, manifest and offline copy, so the page can be saved to a phone's home screen.
     shutil.copytree(HERE / "static", out.parent, dirs_exist_ok=True)
     print(f"{len(items)} items from {len(urls) - len(failed)} of {len(urls)} feeds -> {out}")
 
