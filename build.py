@@ -8,6 +8,7 @@ Reads RSS 2.0, RSS 1.0 (RDF) and Atom.
 import argparse
 import html
 import re
+import shutil
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -155,7 +156,8 @@ def render(items, failed, now):
     if not items:
         rows.append("<p>Nothing new.</p>")
 
-    foot = f"Updated {now.day} {now:%b %H:%M}"
+    # A link back to the page, because a saved home-screen app on iPhone has no pull to refresh.
+    foot = f'<a href="./">Updated {now.day} {now:%b %H:%M}</a>'
     if failed:
         names = ", ".join(html.escape(u) for u in failed)
         foot += f'<br>Could not read {len(failed)}: {names}'
@@ -171,6 +173,12 @@ TEMPLATE = """<!doctype html>
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex">
 <title>Feed</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Feed">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <style>
 :root { --bg: #fff; --fg: #111; --muted: #6b6b6b; --read: #767676; }
 @media (prefers-color-scheme: dark) {
@@ -188,6 +196,7 @@ a:hover .t { text-decoration: underline; text-decoration-thickness: 1px; text-un
 a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .s { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
 footer { margin-top: 3rem; font-size: 0.8rem; color: var(--muted); }
+footer a { display: inline; color: inherit; }
 </style>
 </head>
 <body>
@@ -228,6 +237,8 @@ def main():
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render(items, failed, now))
+    # App icon and manifest, so the page can be saved to a phone's home screen.
+    shutil.copytree(HERE / "static", out.parent, dirs_exist_ok=True)
     print(f"{len(items)} items from {len(urls) - len(failed)} of {len(urls)} feeds -> {out}")
 
 

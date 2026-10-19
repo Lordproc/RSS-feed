@@ -9,6 +9,8 @@
 - **Contrast, measured:** light: text 18.88:1, source 5.33:1, read 4.54:1. Dark: text 15.98:1, source 6.71:1, read 4.52:1. All pass 4.5:1.
 - **Rows** are at least 37px tall and touch each other, so a tap never lands between two links. `noindex` keeps search engines off it.
 
+- **Saveable as a phone app (2026-10-19).** A manifest and icon in `static/` (copied next to the page on build) let it be added to the home screen and open full screen. Still no JavaScript, so no service worker and no offline copy; Chrome no longer needs one to install. The "Updated" time in the footer links back to the page, since a home-screen app on iPhone has no pull to refresh. Icon: three light list rows on near-black, drawn once with a small script, inside Android's safe zone.
+
 ## Open
 
 - Pages must be switched on once by hand: repo Settings, Pages, Source: GitHub Actions. Until then the hourly job fails at the deploy step.
