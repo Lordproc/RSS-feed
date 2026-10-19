@@ -1,0 +1,87 @@
+# Sites to check for feeds (tools/find_feeds.py). Not read by the reader.
+
+# Keep up: product and UX design
+https://www.nngroup.com
+https://www.smashingmagazine.com
+https://uxdesign.cc
+https://alistapart.com
+https://www.figma.com/blog
+https://measuringu.com
+
+# Keep up: product practice
+https://www.svpg.com
+https://www.producttalk.org
+https://www.mindtheproduct.com
+
+# Keep up: tech industry
+https://stratechery.com
+https://www.theverge.com
+https://www.platformer.news
+https://www.ben-evans.com
+https://arstechnica.com
+
+# AI, for designers
+https://simonwillison.net
+https://maggieappleton.com
+
+# Service design and public sector
+https://designnotes.blog.gov.uk
+https://gds.blog.gov.uk
+https://public.digital
+https://www.service-design-network.org
+https://www.designcouncil.org.uk
+
+# Behaviour change, psychology, humane tech
+https://behavioralscientist.org
+https://www.bi.team
+https://thedecisionlab.com
+https://calnewport.com
+
+# Accessibility and universal design
+https://adrianroselli.com
+https://www.sarasoueidan.com
+https://www.tpgi.com
+
+# Interaction, motion and front-end craft
+https://www.joshwcomeau.com
+https://emilkowal.ski
+https://webkit.org
+https://developer.chrome.com/blog
+
+# Visual design and typography
+https://eyeondesign.aiga.org
+https://www.itsnicethat.com
+https://www.underconsideration.com/brandnew
+https://fontsinuse.com
+https://www.creativeboom.com
+
+# Mobile platforms
+https://developer.apple.com/news
+https://android-developers.googleblog.com
+
+# Norway: tech and startups
+https://nrkbeta.no
+https://www.kode24.no
+https://shifter.no
+https://www.digi.no
+https://www.tu.no
+https://www.computerworld.no
+https://schibsted.com/blog
+
+# Norway: design, public sector and law
+https://www.digdir.no
+https://aksel.nav.no
+https://designsystemet.no
+https://www.grafill.no
+https://doga.no
+https://www.kampanje.com
+https://www.kreativtforum.no
+https://www.uutilsynet.no
+https://www.datatilsynet.no
+https://www.forbrukertilsynet.no
+
+# Norway: design studios and consultancies
+https://www.netlife.com
+https://www.bekk.no
+https://www.knowit.no
+https://www.itera.com

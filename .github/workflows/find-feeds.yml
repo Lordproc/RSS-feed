@@ -1,0 +1,22 @@
+# Checks the sites in candidates.txt for working feeds and prints the result in the log.
+# Runs when candidates.txt changes, or by hand. Publishes nothing.
+name: find-feeds
+
+on:
+  push:
+    branches: [main]
+    paths: [candidates.txt, tools/find_feeds.py]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python tools/find_feeds.py candidates.txt
