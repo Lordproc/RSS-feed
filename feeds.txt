@@ -38,3 +38,6 @@ https://tldr.tech/api/rss/design
 
 # Newsletter bridge (Kill the Newsletter): email-only newsletters, forwarded by a Gmail filter.
 https://kill-the-newsletter.com/feeds/eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu.xml
+
+# The Menon Lab Blog (feed found in the page header 2026-11-05)
+https://themenonlab.blog/rss.xml
