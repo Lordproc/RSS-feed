@@ -29,7 +29,8 @@ except Exception:
 
 HERE = Path(__file__).parent
 PER_FEED = 15      # newest items kept from each feed, so one busy feed cannot bury the rest
-MAX_ITEMS = 150    # items on the page in total
+PER_PODCAST = 3    # the same for podcasts (feeds with audio), which publish often
+MAX_ITEMS = 200    # items on the page in total
 # Substack refuses requests from GitHub's servers (403), whatever they claim to be. Its feeds go
 # through a small relay on Cloudflare instead (worker/relay.js). Empty means fetch directly.
 RELAY = "https://rss-relay.lordproctor.workers.dev/"
@@ -39,13 +40,19 @@ BRIDGE_HOSTS = ("kill-the-newsletter.com",)
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15"
 
 
-def read_feed_list(path):
-    urls = []
+def read_feed_entries(path):
+    """(address, starred) per line. A trailing ' *' after the address stars the feed."""
+    out = []
     for line in Path(path).read_text().splitlines():
         line = line.strip()
         if line and not line.startswith("#"):
-            urls.append(line)
-    return urls
+            star = line.endswith(" *")
+            out.append((line[:-2].rstrip() if star else line, star))
+    return out
+
+
+def read_feed_list(path):
+    return [url for url, _ in read_feed_entries(path)]
 
 
 # Substack answers 429 (too many requests) when its feeds are asked for all at once,
@@ -126,6 +133,14 @@ def atom_link(entry):
     return ""
 
 
+def enclosure(item):
+    """Address of an item's audio file, or '' if it has none (so the feed is not a podcast)."""
+    c = child(item, "enclosure")
+    if c is not None and c.get("type", "audio").startswith("audio"):
+        return c.get("url", "")
+    return ""
+
+
 def author(entry):
     """Atom author name, without an email address: 'Dive Club <hi@dive.club>' -> 'Dive Club'."""
     a = child(entry, "author")
@@ -136,6 +151,7 @@ def author(entry):
 def parse(data, per_feed=PER_FEED):
     root = ET.fromstring(data)
     kind = local(root.tag)
+    podcast = False
     if kind == "feed":
         source = text(root, "title")
         entries = [e for e in root if local(e.tag) == "entry"]
@@ -147,18 +163,21 @@ def parse(data, per_feed=PER_FEED):
         # RSS 2.0 keeps items inside the channel; RSS 1.0 keeps them beside it.
         pool = list(channel) if kind == "rss" else list(root)
         entries = [e for e in pool if local(e.tag) == "item"]
-        items = [(text(e, "title"), text(e, "link"), text(e, "pubDate", "date"), "") for e in entries]
+        items = [(text(e, "title"), text(e, "link") or enclosure(e), text(e, "pubDate", "date"), "")
+                 for e in entries]
+        podcast = any(enclosure(e) for e in entries)
 
     out = []
     for title, link, date, by in items:
         when = parse_date(date)
         if link and when:
-            out.append({"title": clean(title) or link, "link": link, "when": when, "by": clean(by)})
+            out.append({"title": clean(title) or link, "link": link, "when": when, "by": clean(by),
+                        "podcast": podcast})
     out.sort(key=lambda i: i["when"], reverse=True)
-    return clean(source), out[:per_feed]
+    return clean(source), out[: min(per_feed, PER_PODCAST) if podcast else per_feed]
 
 
-def load(url, per_feed=PER_FEED):
+def load(url, per_feed=PER_FEED, star=False):
     try:
         # A newsletter bridge gathers many senders in one feed, so each post is named by its
         # sender, and the per-feed limit counts per sender, so a chatty one cannot crowd out the rest.
@@ -168,6 +187,7 @@ def load(url, per_feed=PER_FEED):
         kept = []
         for i in items:
             i["source"] = (bridge and i["by"]) or source or url
+            i["star"] = star
             counts[i["source"]] = counts.get(i["source"], 0) + 1
             if counts[i["source"]] <= per_feed:
                 kept.append(i)
@@ -211,7 +231,7 @@ def render(items, failed, now, page="index.html"):
             rows.append(f"<h2>{day_label(d, today)}</h2>\n<ul>")
             current = d
         rows.append(
-            f'<li><a href="{html.escape(i["link"])}"><span class="t">{html.escape(i["title"])}</span>'
+            f'<li{" class=star" if i.get("star") else ""}><a href="{html.escape(i["link"])}"><span class="t">{html.escape(i["title"])}</span>'
             f' <span class="s">{html.escape(i["source"])}</span></a></li>'
         )
     if current is not None:
@@ -259,6 +279,7 @@ a { display: block; padding: 0.4rem 0; color: var(--fg); text-decoration: none; 
 a:visited { color: var(--read); }
 a:hover .t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.star .t { font-weight: 650; }
 .s { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
 nav { display: flex; gap: 1.25rem; margin-bottom: 2rem; font-size: 0.8rem; }
 nav a, nav a:visited { display: inline-block; padding: 0.6rem 0; color: var(--muted); }
@@ -281,9 +302,10 @@ footer a { display: inline; color: inherit; }
 
 
 def build_page(feeds, out, page, days, per_feed, max_items):
-    urls = read_feed_list(feeds)
+    entries = read_feed_entries(feeds)
+    urls = [u for u, _ in entries]
     with ThreadPoolExecutor(max_workers=8) as pool:
-        results = list(pool.map(lambda u: load(u, per_feed), urls))
+        results = list(pool.map(lambda e: load(e[0], per_feed, e[1]), entries))
 
     now = datetime.now(TZ)
     cutoff = now - timedelta(days=days)
