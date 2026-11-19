@@ -29,8 +29,6 @@ https://unstacked.substack.com/feed
 https://someone-on-film.substack.com/feed
 # Mozilla.ai (Ghost)
 https://mozilla-ai.ghost.io/rss/
-# MIT Technology Review (whole site; the email is its AI newsletter, The Algorithm)
-https://www.technologyreview.com/feed/
 # UX Magazine
 https://uxmag.com/feed
 # TLDR Design (also published on the web; checked from GitHub 2026-10-19)
