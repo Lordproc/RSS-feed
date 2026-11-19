@@ -39,3 +39,168 @@ https://kill-the-newsletter.com/feeds/eqe8zerk6b4k5zqr34wz1lifm3fdzds4d02h2guu.x
 
 # The Menon Lab Blog (feed found in the page header 2026-11-05)
 https://themenonlab.blog/rss.xml
+
+# Podcasts (from my podcast app 2026-11-19; each shows as its newest 3 episodes).
+# To highlight a show I like, add a space and * after its address: https://example.com/feed *
+# Chinese Whispers
+https://access.acast.com/rss/68358ff2998551779f248a35/default
+# The Good Robot
+https://rss.buzzsprout.com/1786427.rss
+# Design Better
+https://feeds.megaphone.fm/designbetter
+# The Secret World of Roald Dahl
+https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/56c1736b-308b-48e9-803a-b3cb0112d291/48090b89-a05d-49e6-9a6c-b3cb0112d6d4/podcast.rss
+# Mind Games
+https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/898005b3-4ab4-4dd9-b4ee-b3cb0117508e/faac7073-e699-453c-abcc-b3cb01175507/podcast.rss
+# Making Sense with Sam Harris
+https://rss.libsyn.com/shows/94577/destinations/480596.xml
+# Forklart
+https://podcast.stream.schibsted.media/ap/100194?podcast
+# The Ezra Klein Show
+https://feeds.simplecast.com/kEKXbjuJ
+# How to Touch Grass
+https://feeds.megaphone.fm/howto
+# Mike Birbiglia's Working It Out
+https://feeds.simplecast.com/MTW0B2El
+# Conan O’Brien Needs A Friend
+https://feeds.simplecast.com/dHoohVNH
+# Hard Fork
+https://feeds.simplecast.com/6HKOhNgS
+# Planet Money
+https://feeds.npr.org/510289/podcast.xml
+# Short History Of...
+https://feeds.megaphone.fm/NSR8236478683
+# The Audio Long Read
+https://www.theguardian.com/news/series/the-audio-long-read/podcast.xml
+# The Life You Can Save by Peter Singer (Audiobook)
+https://anchor.fm/s/31fdf7b0/podcast/rss
+# Historier Som Endret Norge
+https://feeds.acast.com/public/shows/63889ebd60bbdd001068859c
+# Historier Som Endret Verden
+https://feeds.acast.com/public/shows/63889d03eaf58500117bbbca
+# 99% Invisible
+https://feeds.simplecast.com/BqbsxVfO
+# (WIP) Podcast
+https://anchor.fm/s/d72a7628/podcast/rss
+# Dine Penger - Pengerådet
+https://podcast.stream.schibsted.media/vgtv/100412?podcast
+# Adopsjonspodden
+https://anchor.fm/s/55f71930/podcast/rss
+# The Basement Yard
+https://feeds.megaphone.fm/TPC9330816620
+# Pengesnakk
+https://www.omnycontent.com/d/playlist/d79bdbb3-8eae-4ad2-b1f6-b0bc00cd1540/55801ec8-b1ca-4294-a791-b109009297da/d11929d0-267e-4ede-b18b-b109009297f6/podcast.rss
+# Ologies with Alie Ward
+https://feeds.simplecast.com/FO6kxYGj
+# Incubation
+https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/01a1b6d1-ba0d-48dc-976a-b05f0137ad78/af88ca42-e27d-4eaa-a7d5-b05f01387fa4/podcast.rss
+# Real Dictators
+https://feeds.megaphone.fm/NSR6187882468
+# The Gray Area with Sean Illing
+https://feeds.megaphone.fm/theezrakleinshow
+# Try This
+https://podcast.posttv.com/itunes/try-this.xml
+# AMERICAN HYSTERIA
+https://rss.pdrl.fm/ce6fda/feeds.megaphone.fm/WIZD3928139307
+# Not Overthinking
+https://feeds.transistor.fm/notoverthinking
+# Forbrukerrådet
+https://feeds.acast.com/public/shows/64afb6a13cb2b00011ca180b
+# Women's Health
+https://feeds.simplecast.com/IOPKFfxq
+# The a16z Show
+https://feeds.simplecast.com/JGE3yC0V
+# The Louis Theroux Podcast
+https://feeds.megaphone.fm/GLT1948741183
+# This Past Weekend w/ Theo Von
+https://feeds.megaphone.fm/thispastweekend
+# Ferden til F.I.R.E.
+https://www.omnycontent.com/d/playlist/d79bdbb3-8eae-4ad2-b1f6-b0bc00cd1540/88b13e1b-513a-41a0-8b4a-b14900a3e5a5/c8f2b769-e409-4489-9bff-b14900a3e5cb/podcast.rss
+# Speaking of Psychology
+https://feeds.megaphone.fm/AMERICANPSYCHOLOGICALASSOCIATION9933181801
+# Crash Course Pods: The Universe
+https://rss.art19.com/crash-course-the-universe
+# The Most Important Question
+https://rss.beehiiv.com/podcasts/019d39c0-6c2b-73d5-b6fb-6e0ca3020e24.xml
+# The Climate Question
+https://podcasts.files.bbci.co.uk/w13xtvb6.rss
+# Possible with Reid Hoffman
+https://feeds.megaphone.fm/possible
+# Dive Club 🤿
+https://media.rss.com/diveclub/feed.xml
+# Mystery AI Hype Theater 3000
+https://rss.buzzsprout.com/2126417.rss
+# Body Electric
+https://feeds.npr.org/510375/podcast.xml
+# Our Friend the Computer
+https://rss.buzzsprout.com/1923356.rss
+# CrowdScience
+https://podcasts.files.bbci.co.uk/p04d42rc.rss
+# 80,000 Hours Podcast
+https://feeds.transistor.fm/80000-hours-podcast
+# The Rest Is History
+https://feeds.megaphone.fm/GLT4787413333
+# Think Fast Talk Smart: Communication Techniques
+https://feeds.transistor.fm/think-fast-talk-smart-communication-techniques
+# People Fixing The World
+https://podcasts.files.bbci.co.uk/p04d42vf.rss
+# Science In Action
+https://podcasts.files.bbci.co.uk/p002vsnb.rss
+# The Indicator from Planet Money
+https://feeds.npr.org/510325/podcast.xml
+# The Dirtbag Diaries
+https://feeds.megaphone.fm/dirtbagdiaries
+# A Mug of Insights
+https://feeds.acast.com/public/shows/676cd17b696ebe74c72ab45a
+# This Guy Sucked
+https://rss.introcast.io/1800530353/rss.art19.com/this-guy-sucked
+# What We Spend
+https://rss.amperwave.net/v2/feed/audacynetwork/what-we-spend
+# "Age of Miracles"
+https://feeds.megaphone.fm/ageofmiracles
+# Where AI Works: Conversations at the Intersection of AI and Industry
+https://feeds.cohostpodcasting.com/U15PuDPy
+# Go Fact Yourself
+https://feeds.simplecast.com/FeofiXhA
+# Founder's Mentality: The CEO Sessions
+https://feeds.transistor.fm/founders-mentality-the-ceo-sessions
+# Take Your Shoes Off w/ Rick Glassman
+https://rss.art19.com/take-your-shoes-off
+# Kron-podden
+https://feeds.acast.com/public/shows/6791565c156d32d9ae012af6
+# By Design
+https://feeds.megaphone.fm/bydesign
+# Thinking Allowed
+https://podcasts.files.bbci.co.uk/b006qy05.rss
+# Rationally Speaking Podcast
+https://rss.libsyn.com/shows/51362/destinations/182214.xml
+# Hidden Brain
+https://feeds.simplecast.com/kwWc0lhf
+# The Popperian Podcast
+https://rss.libsyn.com/shows/292304/destinations/2291375.xml
+# Philosophy Bites
+https://rss.libsyn.com/shows/18828/destinations/14010.xml
+# Social Science Bites
+https://rss.libsyn.com/shows/36131/destinations/92665.xml
+# Probable Causation
+https://feed.podbean.com/probablecausation/feed.xml
+# EconTalk
+https://feeds.simplecast.com/wgl4xEgL
+# Quantitude
+https://rss.buzzsprout.com/639103.rss
+# Two Psychologists Four Beers
+https://feeds.fireside.fm/fourbeers/rss
+# Very Bad Wizards
+https://rss.libsyn.com/shows/474285/destinations/4022211.xml
+# Decoding the Gurus
+https://feeds.captivate.fm/decoding-the-gurus/
+# The Climate Denier's Playbook
+https://rss.art19.com/the-climate-deniers-playbook
+# Service Design Show
+https://anchor.fm/s/1021a9c/podcast/rss
+# Kohler Media
+https://feeds.megaphone.fm/PCPYT5250832734
+# If Books Could Kill
+https://rss.buzzsprout.com/2040953.rss
+# Foreldrehverdag
+https://feeds.acast.com/public/shows/6914af637728b8766c5035c1
