@@ -70,14 +70,10 @@ https://feeds.simplecast.com/6HKOhNgS
 https://feeds.npr.org/510289/podcast.xml
 # Short History Of...
 https://feeds.megaphone.fm/NSR8236478683
-# The Audio Long Read
-https://www.theguardian.com/news/series/the-audio-long-read/podcast.xml
 # The Life You Can Save by Peter Singer (Audiobook)
 https://anchor.fm/s/31fdf7b0/podcast/rss
 # Historier Som Endret Norge
 https://feeds.acast.com/public/shows/63889ebd60bbdd001068859c
-# Historier Som Endret Verden
-https://feeds.acast.com/public/shows/63889d03eaf58500117bbbca
 # 99% Invisible
 https://feeds.simplecast.com/BqbsxVfO
 # (WIP) Podcast
@@ -138,8 +134,6 @@ https://rss.buzzsprout.com/1923356.rss
 https://podcasts.files.bbci.co.uk/p04d42rc.rss
 # 80,000 Hours Podcast
 https://feeds.transistor.fm/80000-hours-podcast
-# The Rest Is History
-https://feeds.megaphone.fm/GLT4787413333
 # Think Fast Talk Smart: Communication Techniques
 https://feeds.transistor.fm/think-fast-talk-smart-communication-techniques
 # People Fixing The World
@@ -152,8 +146,6 @@ https://feeds.npr.org/510325/podcast.xml
 https://feeds.megaphone.fm/dirtbagdiaries
 # A Mug of Insights
 https://feeds.acast.com/public/shows/676cd17b696ebe74c72ab45a
-# This Guy Sucked
-https://rss.introcast.io/1800530353/rss.art19.com/this-guy-sucked
 # What We Spend
 https://rss.amperwave.net/v2/feed/audacynetwork/what-we-spend
 # "Age of Miracles"
