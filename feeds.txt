@@ -5,7 +5,7 @@
 https://post.substack.com/feed
 https://colinmatthews.substack.com/feed
 https://uxco.substack.com/feed
-https://uxpsychology.substack.com/feed
+https://uxpsychology.substack.com/feed *
 https://benjamintodd.substack.com/feed
 https://erifili.substack.com/feed
 https://forecastingresearch.substack.com/feed
